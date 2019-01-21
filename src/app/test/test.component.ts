@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TestService } from '../service/test/test.service';
+import axios from 'axios';
 
 @Component({
   selector: 'app-test',
@@ -7,21 +8,22 @@ import { TestService } from '../service/test/test.service';
   styleUrls: ['./test.component.scss']
 })
 export class TestComponent implements OnInit {
-  private res: string;
+  private res: any;
 
   constructor(private testService: TestService) { }
 
   ngOnInit() {
     this.testService
       .getTest()
-      .subscribe(res => {
-        if (res) {
-          console.log('something found');          
-          console.log(res);
-        } else {
-          console.log('nothing retrieve');          
-        }
-      });    
+      .subscribe(
+        (res: any) => {
+          console.log(res);          
+          this.res = res;
+        },
+        error => console.log(error));
+    // axios.get('/.netlify/functions/test').then(res => {
+    //   this.res = res;
+    // });
   }
 
 }

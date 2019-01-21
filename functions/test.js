@@ -1,8 +1,8 @@
 exports.handler = (event, context, callback) => {
-    console.log('test');
+    const res = 'yes we can';
 
     return callback(null, {
         statusCode: 200,
-        body: 'yes we can'
+        body: JSON.stringify(res)
     });
 }
