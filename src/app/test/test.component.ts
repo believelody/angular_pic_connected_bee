@@ -21,6 +21,8 @@ export class TestComponent implements OnInit {
           this.res = res;
         },
         error => console.log(error));
+
+    // We can also use axios to retrieve our data from netlify lambda functions
     // axios.get('/.netlify/functions/test').then(res => {
     //   this.res = res;
     // });
