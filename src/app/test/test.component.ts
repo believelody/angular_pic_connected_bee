@@ -8,7 +8,7 @@ import axios from 'axios';
   styleUrls: ['./test.component.scss']
 })
 export class TestComponent implements OnInit {
-  private res: any;
+  private result: any;
 
   constructor(private testService: TestService) { }
 
@@ -18,7 +18,7 @@ export class TestComponent implements OnInit {
       .subscribe(
         (res: any) => {
           console.log(res);          
-          this.res = res;
+          this.result = res;
         },
         error => console.log(error));
 
@@ -27,5 +27,4 @@ export class TestComponent implements OnInit {
     //   this.res = res;
     // });
   }
-
 }
