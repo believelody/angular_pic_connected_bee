@@ -1,0 +1,13 @@
+[
+    {
+        "origin": [
+            "http://localhost:4200",
+            "http://localhost:9000",
+            "https://connectedbee.netlify.com"
+        ],
+        "method": [
+            "GET"
+        ],
+        "maxAgeSeconds": 3600
+    }
+]
