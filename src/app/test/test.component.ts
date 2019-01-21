@@ -8,7 +8,7 @@ import axios from 'axios';
   styleUrls: ['./test.component.scss']
 })
 export class TestComponent implements OnInit {
-  private result: any;
+  result: any;
 
   constructor(private testService: TestService) { }
 
