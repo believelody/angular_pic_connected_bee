@@ -6,8 +6,9 @@
     "start": "cross-env NODE_ENV=dev npm-run-all --parallel start:app start:functions",
     "start:app": "ng serve --proxy-config proxy.config.json",
     "start:functions": "netlify-lambda serve functions",
-    "build": "ng build --prod --aot && npm run nlb",
-    "nlb": "netlify-lambda build functions",
+    "build": "NODE_ENV=production npm-run-all --parallel build:**",
+    "build:app": "ng build --prod",
+    "build:functions": "netlify-lambda build functions",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
