@@ -11,7 +11,8 @@
     "build:functions": "netlify-lambda build functions",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy": "netlify deploy"
   },
   "private": true,
   "dependencies": {
