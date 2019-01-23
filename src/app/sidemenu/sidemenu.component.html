@@ -1,0 +1,34 @@
+<mat-list>
+  <mat-list-item class="list-item">
+    <mat-icon>show_chart</mat-icon>
+    <nav>
+      <a mat-line [routerLink]="['/dashboard']" routerLinkActive="router-link-active">
+        Dashboard
+      </a>
+    </nav>
+  </mat-list-item>
+
+ <mat-list-item class="list-item">
+   <mat-icon>person</mat-icon>
+    <nav>
+      <a mat-line [routerLink]="['/profile']" routerLinkActive="router-link-active">
+        Profile
+      </a>
+    </nav>
+  </mat-list-item>
+
+  <mat-list-item class="list-item">
+    <mat-icon>settings</mat-icon>
+    <nav>
+      <a mat-line [routerLink]="['/settings']" routerLinkActive="router-link-active">
+        Settings
+      </a>
+    </nav>
+  </mat-list-item>
+
+  <mat-list-item>
+    <nav>
+      <a [routerLink]="['/test']" routerLinkActive="router-link-active">Netlify Lambda functions test</a>
+    </nav>
+  </mat-list-item>
+</mat-list>
