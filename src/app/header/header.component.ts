@@ -7,22 +7,7 @@ import { ToggleMenuService } from '../service/toggleMenu/toggleMenu.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  @Input() title: string;
-  // @Input('sidenavRef') sidenav: any;
-  open: boolean = false;
-  constructor(private toggleService: ToggleMenuService) {
-    // console.log(this.sidenav);
-  }
+  constructor(private toggleService: ToggleMenuService) {}
 
   ngOnInit() {}
-
-  toggleMenu() {
-    this.open = !this.open;
-    this.toggleService.toggle(this.open);
-  }
-
-  isMobile() {
-    return window.screen.width < 1024;
-  }
-
 }

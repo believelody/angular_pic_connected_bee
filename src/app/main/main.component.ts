@@ -6,11 +6,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-  @Input('sidenavRef') sidenav: any;
 
-  constructor() {
-    console.log(this.sidenav);
-  }
+  constructor() {}
 
   ngOnInit() {
   }

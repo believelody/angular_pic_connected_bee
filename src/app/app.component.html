@@ -1,8 +1,11 @@
 <mat-sidenav-container class="app-container">
-  <mat-sidenav id='sidenav' mode="side" class="app-sidenav" [(opened)]="isOpened">
+  <mat-sidenav #sidenav mode="side" class="app-sidenav">
     <app-sidemenu></app-sidemenu>
   </mat-sidenav>
   <mat-sidenav-content>
-    <app-main [sidenavRef]="sidenavElement"></app-main>
+    <button class="app-btn-menu" mat-icon-button *ngIf="isMobile()" (click)="sidenav.toggle()">
+      <mat-icon aria-label="Toggle menu">menu</mat-icon>
+    </button>
+    <app-main></app-main>
   </mat-sidenav-content>
 </mat-sidenav-container>

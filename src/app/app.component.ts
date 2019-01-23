@@ -8,17 +8,13 @@ import { ToggleMenuService } from './service/toggleMenu/toggleMenu.service';
 })
 export class AppComponent {
   title = 'pic-connected-bee';
-  isOpened: boolean = true;
-  sidenavElement: any;
 
-  constructor(private toggleService: ToggleMenuService) {
-    this.isOpened = window.screen.width >= 1024;
-    this.sidenavElement = document.getElementById('sidenav');
-    console.log(this.sidenavElement);    
-  }
+  constructor() {}
 
   ngOnInit() {
   }
 
-
+  isMobile() {
+    return window.screen.width < 1024;
+  }
 }
