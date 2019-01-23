@@ -1,7 +1,7 @@
 exports.handler = (event, context, callback) => {
     let res = 'yes we can';
 
-    console.log(event);    
+    console.log(event.queryStringParameters);    
 
     return callback(null, {
         statusCode: 200,
