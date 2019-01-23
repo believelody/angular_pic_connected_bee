@@ -1,5 +1,10 @@
 <mat-sidenav-container class="app-container">
-  <mat-sidenav #sidenav mode="side" class="app-sidenav">
+  <mat-sidenav 
+    #sidenav 
+    mode="side" 
+    class="app-sidenav"
+    [opened]="true"
+  >
     <app-sidemenu></app-sidemenu>
   </mat-sidenav>
   <mat-sidenav-content>

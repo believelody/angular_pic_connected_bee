@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "cross-env NODE_ENV=dev npm-run-all --parallel start:app start:functions",
     "start:app": "ng serve --proxy-config proxy.config.json",
-    "start:functions": "netlify-lambda serve functions",
+    "start:functions": "nodemon server",
     "build": "NODE_ENV=production npm-run-all --parallel build:**",
     "build:app": "ng build --prod",
     "build:functions": "netlify-lambda build functions",
@@ -27,9 +27,13 @@
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
     "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
     "core-js": "^2.5.4",
+    "express": "^4.16.4",
     "http-proxy-middleware": "^0.19.1",
+    "mongoose": "^5.4.6",
     "rxjs": "~6.3.3",
+    "serverless-http": "^1.9.0",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
