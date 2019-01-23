@@ -17,8 +17,8 @@ export class TestComponent implements OnInit {
       .getTest()
       .subscribe(
         (res: any) => {
-          console.log(res.body);          
-          this.result = (res.body);
+          console.log(res);          
+          this.result = (res);
         },
         error => console.log(error));
 
