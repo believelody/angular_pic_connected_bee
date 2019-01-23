@@ -1,6 +1,7 @@
 {
   "name": "pic-connected-bee",
   "version": "0.0.0",
+  "main": "functions/server.js",
   "scripts": {
     "ng": "ng",
     "start": "cross-env NODE_ENV=dev npm-run-all --parallel start:app start:functions",
