@@ -1,5 +1,4 @@
-import { Component, ViewChild, Input } from '@angular/core';
-import { ToggleMenuService } from './service/toggleMenu/toggleMenu.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,23 +6,15 @@ import { ToggleMenuService } from './service/toggleMenu/toggleMenu.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'pic-connected-bee';
-  opened: boolean = false;
-  @ViewChild('sidenav') sidenav: any;
-
-  constructor() {
-    console.log(this.sidenav);
-  }
+  constructor() {}
 
   ngOnInit() {}
 
   isMobile() {
-    this.opened = false;
     return window.screen.width < 1024;
   }
 
-  isDesktop() {
-    this.opened = true;
-    return window.screen.width >= 1024;
-  }
+  // isDesktop() {
+  //   return window.screen.width >= 1024;
+  // }
 }

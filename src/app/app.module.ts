@@ -50,6 +50,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import { HeaderComponent } from './header/header.component';
 import { ToggleMenuService } from './service/toggleMenu/toggleMenu.service';
+import { MobileComponent } from './mobile/mobile.component';
+import { DesktopComponent } from './desktop/desktop.component';
 
 
 @NgModule({
@@ -61,7 +63,9 @@ import { ToggleMenuService } from './service/toggleMenu/toggleMenu.service';
     SettingsComponent,
     ProfileComponent,
     SidemenuComponent,
-    HeaderComponent
+    HeaderComponent,
+    MobileComponent,
+    DesktopComponent
   ],
   imports: [
     BrowserModule,

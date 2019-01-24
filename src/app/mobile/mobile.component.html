@@ -1,0 +1,11 @@
+<mat-sidenav-container class="app-container">
+  <mat-sidenav #sidenav mode="push" class="app-sidenav">
+    <app-sidemenu></app-sidemenu>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <button class="app-btn-menu" mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon aria-label="Toggle menu">menu</mat-icon>
+    </button>
+    <app-main></app-main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
