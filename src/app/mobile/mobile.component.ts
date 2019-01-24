@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-mobile',
@@ -6,10 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mobile.component.scss']
 })
 export class MobileComponent implements OnInit {
-
+  // @ViewChild('sidenav') sidenavRef: ElementRef;
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

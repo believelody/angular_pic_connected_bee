@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-sidemenu',
@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidemenu.component.scss']
 })
 export class SidemenuComponent implements OnInit {
-
+  @Input('sidenavMobile') sidenav: any;
   constructor() { }
 
   ngOnInit() {
+    // console.log(this.sidenav);
   }
 
+  close() {
+    this.sidenav.close();
+  }
 }

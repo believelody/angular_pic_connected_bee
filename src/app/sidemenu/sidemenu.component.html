@@ -2,7 +2,7 @@
   <mat-list-item class="list-item">
     <mat-icon>show_chart</mat-icon>
     <nav>
-      <a mat-line [routerLink]="['/']" routerLinkActive="router-link-active">
+      <a mat-line [routerLink]="['/']" routerLinkActive="router-link-active" (click)="sidenav.close()">
         Dashboard
       </a>
     </nav>
@@ -11,7 +11,7 @@
  <mat-list-item class="list-item">
    <mat-icon>person</mat-icon>
     <nav>
-      <a mat-line [routerLink]="['/profile']" routerLinkActive="router-link-active">
+      <a mat-line [routerLink]="['/profile']" routerLinkActive="router-link-active" (click)="sidenav.close()">
         Profile
       </a>
     </nav>
@@ -20,7 +20,7 @@
   <mat-list-item class="list-item">
     <mat-icon>settings</mat-icon>
     <nav>
-      <a mat-line [routerLink]="['/settings']" routerLinkActive="router-link-active">
+      <a mat-line [routerLink]="['/settings']" routerLinkActive="router-link-active" (click)="sidenav.close()">
         Settings
       </a>
     </nav>
