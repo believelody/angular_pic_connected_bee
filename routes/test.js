@@ -2,7 +2,7 @@ const express = require('express');
 const Test = require('../models/test');
 const router = express.Router();
 
-router.get('/app', (req, res) => {
+router.get('/test', (req, res) => {
     console.log(req.query);
 
     const valeur = new Test({ value: req.query.value });

@@ -17,7 +17,7 @@ mongoose
     .catch(err => console.log(err))
 
 app.use(bodyParser.json());
-app.use('/.netlify/functions/test', test);
+app.use('/.netlify/functions/app', test);
 
 module.exports = app;
 module.exports.handler = serverless(app);
