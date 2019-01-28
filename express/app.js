@@ -9,6 +9,7 @@ const db = require('../config/keys').mongoURI;
 
 // Routes import
 const test = require('../routes/test');
+const auth = require('../routes/auth');
 
 //  Connect to mongodb
 mongoose
@@ -18,6 +19,7 @@ mongoose
 
 app.use(bodyParser.json());
 app.use('/.netlify/functions/app', test);
+app.use('/.netlify/functions/app', auth);
 
 module.exports = app;
 module.exports.handler = serverless(app);
