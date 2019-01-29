@@ -22,7 +22,7 @@ router.get('rucher/:numRucher/ruche/:numRuche', async (req, res) => {
     // }
 });
 
-router.get('/', async (req, res) => {
+router.get('/sms', async (req, res) => {
     const twiml = new MessagingResponse();
     const msgBody = req.query.Body;
     // console.log(req.query.Body);
@@ -39,11 +39,11 @@ router.get('/', async (req, res) => {
         await ruche.save();
         await mesure.save();
         
-        res.json({msg: "Nouvelle mesure enregistrée"});
-        // twiml.message(`You sent ${msgBody}`);
+        // res.json({msg: "Nouvelle mesure enregistrée"});
+        twiml.message(`Nouvelle mesure enregistrée`);
     
-        // res.writeHead(200, {'Content-Type': 'text/xml'});
-        // res.end(twiml.toString());
+        res.writeHead(200, {'Content-Type': 'text/xml'});
+        res.end(twiml.toString());
     } catch (error) {
         throw Error(error);
     }

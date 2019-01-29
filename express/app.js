@@ -25,7 +25,7 @@ app.use('/.netlify/functions/app', test);
 app.use('/.netlify/functions/app', auth);
 app.use('/.netlify/functions/app', rucher);
 app.use('/.netlify/functions/app', ruche);
-app.use('/.netlify/functions/app/sms', mesure);
+app.use('/.netlify/functions/app/', mesure);
 
 module.exports = app;
 module.exports.handler = serverless(app);
