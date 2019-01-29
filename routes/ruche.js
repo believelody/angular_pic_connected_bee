@@ -6,10 +6,10 @@ const Rucher = require('../models/rucher');
 router.get('/ruchers/:id/ruches', async (req, res) => {
     const { id } = req.params;
     try {
-        const ruches = await Ruche.findOne({rucher: id});
-        console.log(ruches);
+        const rucher = await Rucher.findById(id).populate('Ruche');
+        console.log(rucher.ruches);
 
-        res.json(ruches);
+        res.json(rucher.ruches);
     } catch (error) {
         throw Error(error);
     }
@@ -30,30 +30,35 @@ router.get('/ruchers/:idRucher/ruches/:idRuche', async (req, res) => {
     }
 });
 
-router.post('/ruchers/:id/ruches/nouvelle-ruche', async (req, res) => {
+router.post('/ruchers/:id/nouvelle-ruche', async (req, res) => {
     const { id } = req.params;
     try {
         const rucher = await Rucher.findById(id);
+        console.log(rucher.ruches);
+        
         const ruche = new Ruche({
-            number: rucher.ruches.length > 0 ? rucher.ruches.length + 1 : 1,
+            numero: rucher.ruches.length > 0 ? rucher.ruches.length + 1 : 1,
             rucher: id,
             mesures: []
         });
-
+        rucher.ruches.push(ruche);
+        await rucher.save();
         await ruche.save();
 
-        res.json({msg: `La ruche ${ruche.number} a bien été créée.`});
+        res.json({msg: `La ruche ${ruche.numero} a bien été créée.`});
     } catch (error) {
         throw Error(error);
     }
 });
 
 router.delete('/ruchers/:idRucher/ruches/:idRuche', async (req, res) => {
+    console.log(req.params.idRuche);
+    
     const ruche = await Ruche.findById(req.params.idRuche);
     if (!ruche) {
-        res.status(400).json({ msg: "Désolé, cette ruche est introuvable" });
+        res.status(404).json({ msg: "Désolé, cette ruche est introuvable" });
     }
-    await Ruche.findOneAndUpdate({ id: req.params.idRuche }, { $set: { deleted: true } }, { new: true });
+    await Ruche.findByIdAndDelete(ruche.id);
     res.json({ msg: "La ruche a bien été supprimée" });
 });
 

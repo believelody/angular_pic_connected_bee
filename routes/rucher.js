@@ -16,9 +16,9 @@ router.get('/ruchers', async (req, res) => {
 router.post('/nouveau-rucher', async (req, res) => {
     try {
         const ruchers = await Rucher.find();
-
+        console.log(ruchers.length);        
         const { coords } = req.body;
-        const rucher = new Rucher({ number: ruchers ? ruchers.length + 1 : 1, coords, ruches: [] });
+        const rucher = new Rucher({ numero: ruchers.length > 0 ? ruchers.length + 1 : 1, coords, ruches: [] });
 
         await rucher.save();
 
@@ -48,7 +48,7 @@ router.delete('/ruchers/:id', async (req, res) => {
     if (!rucher) {
         res.status(400).json({msg: "Désolé, ce rucher est introuvable"});
     }
-    await Rucher.findOneAndUpdate({ id: req.params.id }, {$set: {deleted: true}}, {new: true});
+    await Rucher.findByIdAndDelete(rucher.id);
     res.json({msg: "Le rucher a bien été supprimé"});
 });
 
