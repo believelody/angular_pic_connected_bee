@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const MessagingResponse = require('twilio').twiml.MessagingResponse();
+// const MessagingResponse = require('twilio').twiml.MessagingResponse();
+const Nexmo = require('nexmo');
 const Mesure = require('../models/mesure');
 const Ruche = require('../models/ruche');
 
@@ -20,15 +21,18 @@ router.get('rucher/:numRucher/ruche/:numRuche', async (req, res) => {
     }
 });
 
-router.post('/sms', async (req, res) => {
-    const twiml = new MessagingResponse();
-    const msgFrom = req.body.From;
-    const msgBody = req.body.Body;
-    console.log(req.body);
-    twiml.message(`You sent ${msgBody}`);
+router.get('/webhooks/inbound-sms', async (req, res) => {
+    // const twiml = new MessagingResponse();
+    // const msgFrom = req.body.From;
+    // const msgBody = req.body.Body;
+    // console.log(req.body);
+    // twiml.message(`You sent ${msgBody}`);
 
-    res.writeHead(200, {'Content-Type': 'text/xml'});
-    res.end(twiml.toString());
+    // res.writeHead(200, {'Content-Type': 'text/xml'});
+    // res.end(twiml.toString());
+    const params = Object.assign(request.query, request.body)
+    console.log(params)
+    response.status(204).send();
 });
 
 // router.post('rucher/:numRucher/ruche/:numRuche', async (req, res) => {
