@@ -7,6 +7,6 @@ module.exports = mongoose.model('Rucher', new Schema({
         lat: Number,
         lng: Number
     },
-    ruches: [{type: Schema.Types.ObjectId, ref: 'Ruches'}],
+    ruches: [{type: Schema.Types.ObjectId, ref: 'Ruche'}],
     deleted: { type: Boolean, default: false }
 }, {timestamps: true}));

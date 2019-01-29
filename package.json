@@ -37,6 +37,7 @@
     "mongoose": "^5.4.6",
     "rxjs": "~6.3.3",
     "serverless-http": "^1.9.0",
+    "twilio": "^3.27.1",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

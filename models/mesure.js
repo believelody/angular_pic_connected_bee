@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const measure = new Schema({
-    rucher: {type: Schema.Types.ObjectId, ref: 'Ruche'},
+    ruche: {type: Schema.Types.ObjectId, ref: 'Ruche'},
     poids: {type: Number, required: true},
     tInt: {type: Number, required: true},
     tExt: {type: Number, required: true},

@@ -4,7 +4,7 @@ const Rucher = require('../models/rucher');
 
 router.get('/ruchers', async (req, res) => {
     try {
-        const ruchers = await Rucher.find();
+        const ruchers = await Rucher.find().populate('Ruche');
         console.log(ruchers);
         
         res.json(ruchers);
@@ -18,7 +18,7 @@ router.post('/nouveau-rucher', async (req, res) => {
         const ruchers = await Rucher.find();
 
         const { coords } = req.body;
-        const rucher = new Rucher({ number: ruchers.length, coords, ruches: [] });
+        const rucher = new Rucher({ number: ruchers ? ruchers.length + 1 : 1, coords, ruches: [] });
 
         await rucher.save();
 
@@ -42,18 +42,6 @@ router.get('/ruchers/:id', async(req, res) => {
        throw Error(error); 
     }
 });
-
-router.get('/ruchers/:id/ruches', async (req, res) => {
-    const { id } = req.params;
-    try {
-        const ruches = await Rucher.findOne(id).populate('Ruche');
-        console.log(ruches);
-        
-        res.json(ruches);
-    } catch (error) {
-        throw Error(error);
-    }
-})
 
 router.delete('/ruchers/:id', async (req, res) => {
     const rucher = await Rucher.findById(req.params.id);
