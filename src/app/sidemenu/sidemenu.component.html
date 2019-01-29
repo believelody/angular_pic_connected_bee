@@ -1,34 +1,53 @@
 <mat-list>
   <mat-list-item class="list-item">
-    <mat-icon>show_chart</mat-icon>
+    <mat-icon class="right-space">dashboard</mat-icon>
     <nav>
-      <a mat-line [routerLink]="['/']" routerLinkActive="router-link-active" (click)="sidenav.close()">
+      <span mat-line [routerLink]="['/']" routerLinkActive="router-link-active" (click)="sidenav.close()">
         Dashboard
-      </a>
-    </nav>
-  </mat-list-item>
-
- <mat-list-item class="list-item">
-   <mat-icon>person</mat-icon>
-    <nav>
-      <a mat-line [routerLink]="['/profile']" routerLinkActive="router-link-active" (click)="sidenav.close()">
-        Profile
-      </a>
+      </span>
     </nav>
   </mat-list-item>
 
   <mat-list-item class="list-item">
-    <mat-icon>settings</mat-icon>
+    <mat-icon class="right-space">list</mat-icon>
     <nav>
-      <a mat-line [routerLink]="['/settings']" routerLinkActive="router-link-active" (click)="sidenav.close()">
-        Settings
-      </a>
+      <span mat-line [routerLink]="['/ruchers']" routerLinkActive="router-link-active" (click)="sidenav.close()">
+        Ruchers
+      </span>
     </nav>
   </mat-list-item>
 
-  <mat-list-item>
+ <mat-list-item class="list-item">
+   <mat-icon class="right-space">person</mat-icon>
     <nav>
-      <a [routerLink]="['/test']" routerLinkActive="router-link-active">Netlify Lambda functions test</a>
+      <span mat-line [routerLink]="['/profile']" routerLinkActive="router-link-active" (click)="sidenav.close()">
+        Profile
+      </span>
     </nav>
+  </mat-list-item>
+
+  <mat-list-item class="list-item">
+    <mat-icon class="right-space">settings</mat-icon>
+    <nav>
+      <span mat-line [routerLink]="['/settings']" routerLinkActive="router-link-active" (click)="sidenav.close()">
+        Paramètres
+      </span>
+    </nav>
+  </mat-list-item>
+
+  <mat-list-item class="list-item">
+    <mat-icon class="right-space">assignment</mat-icon>
+    <nav>
+      <span mat-line [routerLink]="['/reports']" routerLinkActive="router-link-active" (click)="sidenav.close()">
+        Rapports
+      </span>
+    </nav>
+  </mat-list-item>
+
+  <mat-list-item class="list-item">
+    <button mat-flat-button class="btn-space">
+      <span class="right-space">Se Déconnecter</span>
+      <mat-icon>power_settings_new</mat-icon>
+    </button>
   </mat-list-item>
 </mat-list>

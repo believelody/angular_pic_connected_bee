@@ -5,8 +5,24 @@ a {
 
 .list-item {
     border-bottom: 1px solid #cccccc;
+    color: #ffffff;
+    font-weight: 10px;
+    letter-spacing: 2px;
 }
 
-.list:first-child {
+.list-item:first-child {
     border-top: 1px solid #cccccc;
+}
+
+.list-item:last-child {
+    border-bottom: none;
+    padding: 7px 0;
+}
+
+.right-space {
+    padding-right: 10px;
+}
+
+.btn-space {
+    margin: 0 auto;
 }

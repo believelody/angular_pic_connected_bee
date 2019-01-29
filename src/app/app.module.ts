@@ -52,6 +52,12 @@ import { HeaderComponent } from './header/header.component';
 import { ToggleMenuService } from './service/toggleMenu/toggleMenu.service';
 import { MobileComponent } from './mobile/mobile.component';
 import { DesktopComponent } from './desktop/desktop.component';
+import { ReportComponent } from './report/report.component';
+import { RucherListComponent } from './rucher-list/rucher-list.component';
+import { RucherDetailComponent } from './rucher-detail/rucher-detail.component';
+import { RucheListComponent } from './ruche-list/ruche-list.component';
+import { RucheDetailComponent } from './ruche-detail/ruche-detail.component';
+import { LogoComponent } from './logo/logo.component';
 
 
 @NgModule({
@@ -65,7 +71,13 @@ import { DesktopComponent } from './desktop/desktop.component';
     SidemenuComponent,
     HeaderComponent,
     MobileComponent,
-    DesktopComponent
+    DesktopComponent,
+    ReportComponent,
+    RucherListComponent,
+    RucherDetailComponent,
+    RucheListComponent,
+    RucheDetailComponent,
+    LogoComponent
   ],
   imports: [
     BrowserModule,
