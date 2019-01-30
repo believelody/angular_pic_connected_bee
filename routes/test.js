@@ -3,7 +3,7 @@ const Test = require('../models/test');
 const router = express.Router();
 
 router.get('/test', (req, res) => {
-    // console.log(req.query);
+    console.log(req.query);
 
     // const valeur = new Test({ value: req.query.value });
     res.json({ msg: req.query.value });

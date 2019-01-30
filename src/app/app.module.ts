@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { TestComponent } from './test/test.component';
 import { TestService } from './service/test/test.service';
@@ -58,6 +59,7 @@ import { RucherDetailComponent } from './rucher-detail/rucher-detail.component';
 import { RucheListComponent } from './ruche-list/ruche-list.component';
 import { RucheDetailComponent } from './ruche-detail/ruche-detail.component';
 import { LogoComponent } from './logo/logo.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -83,6 +85,7 @@ import { LogoComponent } from './logo/logo.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     BrowserAnimationsModule,
     MatAutocompleteModule,
     MatBadgeModule,
@@ -119,6 +122,7 @@ import { LogoComponent } from './logo/logo.component';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
+    NgbDatepickerModule
   ],
   providers: [
     TestService,

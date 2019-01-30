@@ -4,10 +4,11 @@
     margin: 0;
     padding: 0;
     position: relative;
+    box-sizing: border-box;
 
     .app-sidenav {
         background-color: #0077B5;
-        min-width: 250px;
+        min-width: 300px;
     }
 
     .app-btn-menu {
