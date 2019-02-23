@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbDateAdapter, NgbDateStruct, NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap';
+import { MesureService } from '..//mesure.service';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,6 +21,10 @@ export class DashboardComponent implements OnInit {
   dateSelect(e: Date) {
     console.log(e);
     // this.selectDate = JSON.stringify(e);    
+  }
+
+  isMobile() {
+    return window.screen.width < 1024;
   }
 
   get today() {

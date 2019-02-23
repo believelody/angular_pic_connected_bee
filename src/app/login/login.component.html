@@ -1,0 +1,15 @@
+<mat-card style="position: relative; max-width: 700px; height: 500px; margin: auto;">
+  <mat-form-field appearance="standard" style="width: 100%">
+      <mat-label for="email">Email</mat-label>
+      <input [(ngModel)]="email" type="email" name='email' matInput placeholder="Indiquez votre adresse mail" required>
+      <mat-error *ngIf="error.email.flag">{{error.email.msg}}</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="standard" style="width: 100%">
+      <mat-label for="password">Mot de passe</mat-label>
+      <input [(ngModel)]="password" type="password" name='password' matInput placeholder="Indiquez votre mot de passe" required>
+      <mat-error *ngIf="error.password.flag">{{error.password.msg}}</mat-error>
+  </mat-form-field>
+  <button mat-raised-button style="background-color: #0077B5" (click)="submit()">Se connecter</button>
+  <mat-error *ngIf="error.authEmail.flag">{{error.authEmail.msg}}</mat-error>
+  <mat-error *ngIf="error.authPassword.flag">{{error.authPassword.msg}}</mat-error>
+</mat-card>

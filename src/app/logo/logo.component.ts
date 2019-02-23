@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-logo',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./logo.component.scss']
 })
 export class LogoComponent implements OnInit {
-
-  constructor() { }
+  user: any;
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
+    this.user = this.auth.getAuthUser() ? this.auth.getAuthUser() : null;
   }
 
+  ngDoCheck() {
+    this.user = this.auth.getAuthUser() ? this.auth.getAuthUser() : null;
+  }
 }

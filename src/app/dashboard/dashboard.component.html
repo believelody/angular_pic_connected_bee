@@ -1,12 +1,10 @@
 <app-header [title]="title"></app-header>
 <mat-card class="dashboard-card">
   <mat-card-content class="dashboard-layout">
-    <p class="column-layout">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam molestiae, magni placeat esse quia labore odio
-      consectetur quo illo reiciendis amet? Quam, error blanditiis. Eligendi tempora perspiciatis inventore iusto
-      voluptatibus minima veniam odio, recusandae officiis repudiandae omnis quo alias hic quod maiores numquam aliquid
-      ea dolorum. Architecto dolorum in hic.
-    </p>
-    <ngb-datepicker #d [(ngModel)]="date" class="column-layout datepicker"></ngb-datepicker>
+    <app-chart></app-chart>
+    <div *ngIf="!isMobile()" style="position: relative; text-align: center">
+      <h4>Calendrier</h4>
+      <ngb-datepicker #d [(ngModel)]="date" class="datepicker"></ngb-datepicker>
+    </div>
   </mat-card-content>
 </mat-card>

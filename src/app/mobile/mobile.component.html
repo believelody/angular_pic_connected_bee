@@ -4,7 +4,7 @@
     <app-sidemenu [sidenavMobile]="sidenav"></app-sidemenu>
   </mat-sidenav>
   <mat-sidenav-content>
-    <button class="app-btn-menu" mat-icon-button (click)="sidenav.toggle()">
+    <button *ngIf="isLogged" class="app-btn-menu" mat-icon-button (click)="sidenav.toggle()">
       <mat-icon aria-label="Toggle menu">menu</mat-icon>
     </button>
     <app-main></app-main>

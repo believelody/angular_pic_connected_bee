@@ -2,17 +2,25 @@
     margin-bottom: 10px;
 
     .dashboard-layout {
-        display: grid;
-        grid-template-columns: 50% 50%;
-        grid-column-gap: 1em;
+        display: block;
+    }
 
-        .column-layout {
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
+    @media screen and (min-width: 1024px) {
+        .dashboard-layout {
+            display: grid;
+            grid-template-columns: 60% 40%;
+            grid-column-gap: 1em;
 
-        .datepicker {
-            margin: 0 auto;
+            .column-layout {
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+            .datepicker {
+                max-height: 280px;
+                max-width: 280px;
+                margin: auto 0;
+            }
         }
     }
 }

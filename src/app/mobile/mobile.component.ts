@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mobile',
@@ -6,8 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mobile.component.scss']
 })
 export class MobileComponent implements OnInit {
-  constructor() { }
+  isLogged: boolean = false;
+  constructor(private auth: AuthService, private router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.isLogged = this.auth.loggedIn;
+  }
+
+  ngDoCheck() {
+    this.isLogged = this.auth.loggedIn;
+  }
 
 }

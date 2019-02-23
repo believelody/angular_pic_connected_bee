@@ -1,4 +1,4 @@
 <div class="logo-container">
     <img src="assets/logo.png" alt="logo" class="logo">
-    <span class="texte">Bienvenue <b>Laurent Alquier</b></span>
+    <span *ngIf="user" class="texte">Bienvenue <b>{{user.name}}</b></span>
 </div>

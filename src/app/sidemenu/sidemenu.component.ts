@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, ElementRef } from '@angular/core';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidemenu',
@@ -7,13 +9,20 @@ import { Component, OnInit, Input, ElementRef } from '@angular/core';
 })
 export class SidemenuComponent implements OnInit {
   @Input('sidenavMobile') sidenav: any;
-  constructor() { }
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
-    // console.log(this.sidenav);
   }
 
   close() {
-    this.sidenav.close();
+    if (window.screen.width < 1024) {
+      this.sidenav.close();      
+    }
+  }
+
+  logout() {
+    this.close();
+    this.auth.logout();
+    this.router.navigate(['login']);
   }
 }

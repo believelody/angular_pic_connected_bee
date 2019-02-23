@@ -1,0 +1,11 @@
+<div *ngIf="!chart">
+  <h3>Aucune donnée à afficher</h3>
+</div>
+<div *ngIf="chart" style="text-align: center">
+  <mat-form-field *ngIf="isMobile()" style="font-size: 1.5em">
+    <input matInput [matDatepicker]="picker" placeholder="Choisir une date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <canvas height="250" id='chart' style="margin: 0%; padding: 0%;">{{chart}}</canvas>
+</div>

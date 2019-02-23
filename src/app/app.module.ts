@@ -3,10 +3,9 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { JwtModule } from '@auth0/angular-jwt'
 import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
-import { TestComponent } from './test/test.component';
-import { TestService } from './service/test/test.service';
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -50,7 +49,6 @@ import { SettingsComponent } from './settings/settings.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import { HeaderComponent } from './header/header.component';
-import { ToggleMenuService } from './service/toggleMenu/toggleMenu.service';
 import { MobileComponent } from './mobile/mobile.component';
 import { DesktopComponent } from './desktop/desktop.component';
 import { ReportComponent } from './report/report.component';
@@ -60,12 +58,19 @@ import { RucheListComponent } from './ruche-list/ruche-list.component';
 import { RucheDetailComponent } from './ruche-detail/ruche-detail.component';
 import { LogoComponent } from './logo/logo.component';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth.guard';
+import { LoginComponent } from './login/login.component';
+import { MesureService } from './mesure.service';
+import { ChartComponent } from './chart/chart.component';
 
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent,
     MainComponent,
     DashboardComponent,
     SettingsComponent,
@@ -79,7 +84,9 @@ import { FormsModule } from '@angular/forms';
     RucherDetailComponent,
     RucheListComponent,
     RucheDetailComponent,
-    LogoComponent
+    LogoComponent,
+    LoginComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
@@ -122,11 +129,19 @@ import { FormsModule } from '@angular/forms';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-    NgbDatepickerModule
+    NgbDatepickerModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter,
+        whitelistedDomains: ['localhost:9000'],
+        blacklistedRoutes: ['/.netlify/functions/app/login']
+      }
+    })
   ],
   providers: [
-    TestService,
-    ToggleMenuService
+    AuthService,
+    AuthGuard,
+    MesureService
   ],
   bootstrap: [AppComponent]
 })

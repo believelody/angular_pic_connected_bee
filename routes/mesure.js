@@ -40,30 +40,27 @@ router.get('/sms', async (req, res) => {
         await mesure.save();
         
         // res.json({msg: "Nouvelle mesure enregistrée"});
-        twiml.message(`Nouvelle mesure enregistrée`);
+        // twiml.message(`Nouvelle mesure enregistrée`);
     
-        res.writeHead(200, {'Content-Type': 'text/xml'});
-        res.end(twiml.toString());
+        // res.writeHead(200, {'Content-Type': 'text/xml'});
+        // res.end(twiml.toString());
     } catch (error) {
         throw Error(error);
     }
     
 });
 
-// router.post('rucher/:numRucher/ruche/:numRuche', async (req, res) => {
-//     const { numRucher, numRuche } = req.params;
-//     const { poids, tInt, tExt } = req.body;
-//     console.log(req.body);
+router.get('/mesures', async (req, res) => {
+    const { poids, tInt, tExt } = req.body;
+    console.log(req.body);
 
-//     try {
-//         const ruche = await Ruche.findOne({ numero: numRuche, rucher: numRucher });
-//         const mesure = new Mesure({ ruche, poids, tInt, tExt });
-//         await mesure.save();
+    try {
+        const mesures = await Mesure.find();
 
-//         res.json({ msg: "Nouvelle mesure enregistrée" });
-//     } catch (error) {
-//         throw Error(error);
-//     }
-// });
+        res.json({ success: true, mesures});
+    } catch (error) {
+        throw Error(error);
+    }
+});
 
 module.exports = router;
