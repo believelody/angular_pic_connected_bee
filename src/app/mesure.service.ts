@@ -14,6 +14,7 @@ export class MesureService {
     return this.http
       .get('/.netlify/functions/app/mesures')
       .pipe(map(res => {
+        console.log(res['mesures'])
         return res['mesures'];
       }));
   }
