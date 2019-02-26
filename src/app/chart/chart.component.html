@@ -1,11 +1,29 @@
 <div *ngIf="!chart">
   <h3>Aucune donnée à afficher</h3>
 </div>
-<div *ngIf="chart" style="text-align: center">
+<div *ngIf="chart" style="text-align: center; display: block">
+  <button 
+    *ngIf="isMobile()" 
+    mat-mini-fab 
+    (click)="backToday()" 
+    style="margin-right: 20px; background-color:dimgrey"
+  >
+    <mat-icon aria-label="aujourd'hui">replay</mat-icon>
+  </button>
   <mat-form-field *ngIf="isMobile()" style="font-size: 1.5em">
-    <input matInput [matDatepicker]="picker" placeholder="Choisir une date">
+    <input 
+      matInput 
+      [matDatepicker]="picker" 
+      placeholder="Choisir une date" 
+      [value]="inputDate" 
+      (dateInput)="dateSelect('input', $event)" 
+      (dateChange)="dateSelect('change', $event)"
+    >
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
-  <canvas height="250" id='chart' style="margin: 0%; padding: 0%;">{{chart}}</canvas>
+  <div>
+    <mat-slide-toggle color='accent' (click)="toggleType(chart)">{{type}}</mat-slide-toggle>
+  </div>
+  <canvas responsive height="250" id='chart' style="margin: 0%; padding: 0%;">{{chart}}</canvas>
 </div>

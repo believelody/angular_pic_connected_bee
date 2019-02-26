@@ -21,14 +21,16 @@ export class MesureService {
       }));
   }
 
-  selectDate(date) {
+  selectDate(date, mesures: any[] = null): any[] {
+    let mes: any = [];
+    if (mesures) mes = mesures;
+    else mes = this.mesures;
     
-    return this.mesures
+    return mes
       .filter(mesure => {
         let d = new Date(date);
         let m = new Date(mesure.updatedAt);
         if (m.getMonth() === d.getMonth()) {
-          console.log("true");
           if (m.getDate() === d.getDate()) {
             return mesure;
           }
