@@ -1,10 +1,10 @@
 <app-header [title]="title"></app-header>
 <mat-card class="dashboard-card">
   <mat-card-content class="dashboard-layout">
-    <app-chart></app-chart>
+    <app-chart [selected]="selected" [mesures]="mesures"></app-chart>
     <div *ngIf="!isMobile()" style="position: relative; text-align: center">
       <h4>Calendrier</h4>
-      <ngb-datepicker #d [(ngModel)]="date" class="datepicker"></ngb-datepicker>
+      <ngb-datepicker (click)='dateSelect(date)' #d [(ngModel)]="date" class="datepicker"></ngb-datepicker>
     </div>
   </mat-card-content>
 </mat-card>

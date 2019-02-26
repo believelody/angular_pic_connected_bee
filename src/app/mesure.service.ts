@@ -7,15 +7,38 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class MesureService {
+  mesures: any[] = [];
 
   constructor(private http: HttpClient) { }
 
-  getMesure(): Observable<any> {
+  getMesureRequest(): Observable<any> {
     return this.http
       .get('/.netlify/functions/app/mesures')
       .pipe(map(res => {
-        console.log(res['mesures'])
-        return res['mesures'];
+        this.mesures = res['mesures'];
+
+        return this.mesures;
       }));
+  }
+
+  selectDate(date) {
+    
+    return this.mesures
+      .filter(mesure => {
+        let d = new Date(date);
+        let m = new Date(mesure.updatedAt);
+        if (m.getMonth() === d.getMonth()) {
+          console.log("true");
+          if (m.getDate() === d.getDate()) {
+            return mesure;
+          }
+          else return mesure;
+        }
+      })
+      .map(mesure => mesure);
+  }
+
+  getMesure() {
+    return this.mesures;
   }
 }

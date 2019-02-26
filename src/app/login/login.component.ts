@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
       .login(this.email, this.password)
       .subscribe(
         res => {
+          console.log(res);
           if (res.success) {
             this.router.navigate(['']);            
           } else {

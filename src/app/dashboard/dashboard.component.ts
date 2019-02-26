@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbDateAdapter, NgbDateStruct, NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateAdapter, NgbDate, NgbDateNativeAdapter, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 import { MesureService } from '..//mesure.service';
-import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,15 +11,18 @@ import { Chart } from 'chart.js';
 export class DashboardComponent implements OnInit {
   title: string = "Dashboard";
   date: Date;
-  constructor() { }
+  mesures: any[] = [];
+  ngbDate: NgbDate;
+  selected: boolean = false;
+  constructor(private mesureService: MesureService, calendar: NgbCalendar) { }
 
   ngOnInit() {
     this.date = this.today;
   }
 
-  dateSelect(e: Date) {
-    console.log(e);
-    // this.selectDate = JSON.stringify(e);    
+  dateSelect(date: Date) {
+    this.mesures = this.mesureService.selectDate(date);
+    this.selected = true;
   }
 
   isMobile() {

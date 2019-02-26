@@ -31,7 +31,6 @@ router.get('/sms', async (req, res) => {
         const rucher = await Rucher.findOne({ numero: 1 });
         const ruche = await Ruche.findOne({ numero: 1, rucher: rucher.id });
         let val = msgBody.slice(msgBody.indexOf('PIC'))
-        console.log(val);;
         const tab = val.split(';');
         console.log(tab);
         const mesure = new Mesure({ruche: ruche.id, poids: tab[1], tInt: 0, tExt: 0});
@@ -46,18 +45,47 @@ router.get('/sms', async (req, res) => {
         // res.end(twiml.toString());
     } catch (error) {
         throw Error(error);
+    }    
+});
+
+router.get('/envoi', async (req, res) => {
+
+    try {
+        const rucher = await Rucher.findOne({ numero: 1 });
+        const ruche = await Ruche.findOne({ numero: 1, rucher: rucher.id });
+        // let val = msgBody.slice(msgBody.indexOf('PIC'))
+        // const tab = val.split(';');
+        const poids = req.query.value;
+        console.log(poids);
+        const mesure = new Mesure({ ruche: ruche.id, poids, tInt: 0, tExt: 0 });
+        ruche.mesures.push(mesure);
+        await ruche.save();
+        await mesure.save();
+
+        res.json({msg: "Nouvelle mesure enregistrée"});
+        // twiml.message(`Nouvelle mesure enregistrée`);
+
+        // res.writeHead(200, {'Content-Type': 'text/xml'});
+        // res.end(twiml.toString());
+    } catch (error) {
+        throw Error(error);
     }
-    
 });
 
 router.get('/mesures', async (req, res) => {
-    const { poids, tInt, tExt } = req.body;
-    console.log(req.body);
-
     try {
         const mesures = await Mesure.find();
 
         res.json({ success: true, mesures});
+    } catch (error) {
+        throw Error(error);
+    }
+});
+
+router.get('/select', async (req, res) => {
+    console.log(req.query);
+    try {
+        
     } catch (error) {
         throw Error(error);
     }
