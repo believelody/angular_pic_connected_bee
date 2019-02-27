@@ -106,18 +106,27 @@ export class ChartComponent implements OnInit {
     let dates: any[] = [];
     let poids: number[] = [];
 
-    mesures.forEach(mesure => {
-      if (mesure) {
+    console.log(mesures);
+
+    if (mesures.length > 0) {
+      mesures.forEach(mesure => {
         dates.push(moment(mesure.updatedAt).format("DD MMM YYYY HH:mm"));
         poids.push(mesure.poids);
-      }
-    });
+      });
+    }
+
     if (this.dates !== dates) this.dates = dates;
     if (this.poids !== poids) this.poids = poids;
 
-    this.calcMax(this.poids);
-    this.calcAvg(this.poids);
-    this.calcMin(this.poids);
+    if (this.poids.length > 0) {
+      this.calcMax(this.poids);
+      this.calcAvg(this.poids);
+      this.calcMin(this.poids);
+    }
+    else {
+      this.max = 0;
+      this.avg = 0;
+      this.min = 0;}
   }
 
   setDPC(chart, mesures: any[]) {
