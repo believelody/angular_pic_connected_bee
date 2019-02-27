@@ -73,19 +73,11 @@ router.get('/envoi', async (req, res) => {
 });
 
 router.get('/mesures', async (req, res) => {
+    const { ruche } = req.query;
     try {
-        const mesures = await Mesure.find();
+        const mesures = await Mesure.find({ ruche });
 
         res.json({ success: true, mesures});
-    } catch (error) {
-        throw Error(error);
-    }
-});
-
-router.get('/select', async (req, res) => {
-    console.log(req.query);
-    try {
-        
     } catch (error) {
         throw Error(error);
     }

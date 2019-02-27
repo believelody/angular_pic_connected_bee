@@ -1,0 +1,16 @@
+<mat-accordion style="max-width: 550px; margin-top: 20px">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Date de mesure:</mat-panel-title>
+      <mat-panel-description>
+        <span *ngIf="selectDate">{{selectDate.toLocaleDateString()}}</span>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <h5 *ngIf="isEmpty()">Aucune donnée à afficher</h5>
+    <mat-list *ngIf="!isEmpty()" role="list">
+      <mat-list-item *ngFor="let mes of mesuresItem">
+        <b>{{mes.poids.toFixed(2)}} kg</b> <span style="padding: 0 30px">à</span> {{parseDate(mes.updatedAt).toLocaleTimeString()}}
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+</mat-accordion>

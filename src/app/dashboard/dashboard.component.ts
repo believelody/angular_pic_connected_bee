@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
   }
 
   dateSelect(date: Date) {
-    this.mesures = this.mesureService.selectDate(date);
+    this.date = date;
     this.selected = true;
   }
 
@@ -35,7 +35,6 @@ export class DashboardComponent implements OnInit {
 
   backToday() {
     this.date = this.today;
-    this.mesures = this.mesureService.selectDate(this.date);
     this.selected = false;
   }
 

@@ -15,6 +15,15 @@ router.get('/ruchers/:id/ruches', async (req, res) => {
     }
 });
 
+router.get('/ruches', async (req, res) => {
+    try {
+        const ruches = await Ruche.find();
+        res.json(ruches);
+    } catch (error) {
+        throw Error(error);
+    }
+});
+
 router.get('/ruchers/:idRucher/ruches/:idRuche', async (req, res) => {
     const { idRuche } = req.params;
     try {

@@ -11,22 +11,15 @@ export class MesureService {
 
   constructor(private http: HttpClient) { }
 
-  getMesureRequest(): Observable<any> {
+  getMesureRequest(id: string): Observable<any> {
     return this.http
-      .get('/.netlify/functions/app/mesures')
-      .pipe(map(res => {
-        this.mesures = res['mesures'];
-
-        return this.mesures;
-      }));
+      .get(`/.netlify/functions/app/mesures?ruche=${id}`)
+      .pipe(map(res => res['mesures']));
   }
 
-  selectDate(date, mesures: any[] = null): any[] {
-    let mes: any = [];
-    if (mesures) mes = mesures;
-    else mes = this.mesures;
+  selectDate(date: Date, mesures: any[]): any[] {
     
-    return mes
+    return mesures
       .filter(mesure => {
         let d = new Date(date);
         let m = new Date(mesure.updatedAt);

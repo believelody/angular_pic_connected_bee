@@ -63,6 +63,9 @@ import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './login/login.component';
 import { MesureService } from './mesure.service';
 import { ChartComponent } from './chart/chart.component';
+import { ItemComponent } from './item/item.component';
+import { SelectRucheComponent } from './select-ruche/select-ruche.component';
+import { RucheService } from './ruche.service';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -86,7 +89,9 @@ export function tokenGetter() {
     RucheDetailComponent,
     LogoComponent,
     LoginComponent,
-    ChartComponent
+    ChartComponent,
+    ItemComponent,
+    SelectRucheComponent
   ],
   imports: [
     BrowserModule,
@@ -141,7 +146,8 @@ export function tokenGetter() {
   providers: [
     AuthService,
     AuthGuard,
-    MesureService
+    MesureService,
+    RucheService
   ],
   bootstrap: [AppComponent]
 })

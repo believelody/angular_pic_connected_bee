@@ -1,7 +1,7 @@
 <app-header [title]="title"></app-header>
 <mat-card class="dashboard-card">
   <mat-card-content class="dashboard-layout">
-    <app-chart [reset]="today" [selected]="selected" [mesures]="mesures"></app-chart>
+    <app-chart [reset]="today" [selected]="selected" [date]="date"></app-chart>
     <div *ngIf="!isMobile()" style="position: relative; text-align: center; display: flex; flex-direction: column">
       <h4>Calendrier</h4>
       <ngb-datepicker (click)='dateSelect(date)' #d [(ngModel)]="date" class="datepicker"></ngb-datepicker>

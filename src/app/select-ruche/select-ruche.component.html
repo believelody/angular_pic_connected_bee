@@ -1,0 +1,7 @@
+<mat-form-field>
+  <mat-select [(value)]="selected">
+    <mat-option *ngFor="let ruche of ruches" [value]="ruche._id">
+      Ruche n°{{ruche.numero}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

@@ -1,7 +1,15 @@
-<div *ngIf="!chart">
+<mat-form-field>
+  <mat-select [(value)]="id">
+    <mat-option (click)="setRuche()" *ngFor="let ruche of ruches" [value]="ruche._id">
+      Ruche n°{{ruche.numero}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<div *ngIf="!isChart">
   <h3>Aucune donnée à afficher</h3>
 </div>
-<div *ngIf="chart" style="text-align: center; display: block">
+<div *ngIf="isChart" style="text-align: center; display: block">
   <button 
     *ngIf="isMobile()" 
     mat-mini-fab 
@@ -25,5 +33,12 @@
   <div>
     <mat-slide-toggle color='accent' (click)="toggleType(chart)">{{type}}</mat-slide-toggle>
   </div>
-  <canvas responsive height="250" id='chart' style="margin: 0%; padding: 0%;">{{chart}}</canvas>
+  <canvas responsive height="250" id='canvas' style="margin: 0%; padding: 0%;">{{chart}}</canvas>
+  <mat-chip-list style="padding-bottom: 20px">
+    <strong>Max:</strong><mat-chip>{{max}} kg</mat-chip>
+    <strong>Moy:</strong><mat-chip>{{avg}} kg</mat-chip>
+    <strong>Min:</strong><mat-chip>{{min}} kg</mat-chip>
+  </mat-chip-list>
+  <mat-divider></mat-divider>
+  <app-item [mesures]="mesures" [date]="inputDate"></app-item>
 </div>
