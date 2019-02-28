@@ -5,6 +5,7 @@ const MessagingResponse = require('twilio').twiml.MessagingResponse;
 const Mesure = require('../models/mesure');
 const Ruche = require('../models/ruche');
 
+// Solution alternative avec l'envoie du sms. Une fois que l'api twilio reçoit le message du raspberry, elle renvoie le contenu au serveur en passant par cette route. Actuellement, cette solution a été écartée. Se réferrer à la route /envoi.
 router.get('/sms', async (req, res) => {
     const twiml = new MessagingResponse();
     const msgBody = req.query.Body;
@@ -31,6 +32,7 @@ router.get('/sms', async (req, res) => {
     }    
 });
 
+// Route recevant le poids et le numéro de la ruche. Il faut spécifier la methode en GET et les paramètres value et numero. Ex: https://connectedbee.netlify.com/.../envoi?value=23&numero=1.
 router.get('/envoi', async (req, res) => {
     const { value, numero } = req.query;
 
@@ -55,6 +57,7 @@ router.get('/envoi', async (req, res) => {
     }
 });
 
+// Renvoie toutes les mesures enregistrées d'une ruche. Il faut spécifier la ruche en ajoutant en "query" le numéro de la ruche. Ex: https://connectedbee.netlify.com/.../mesures?ruche=2
 router.get('/mesures', async (req, res) => {
     const { ruche } = req.query;
     try {

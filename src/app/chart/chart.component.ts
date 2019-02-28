@@ -31,23 +31,19 @@ export class ChartComponent implements OnInit {
   constructor(private mesureService: MesureService, private rucheService: RucheService) { }
 
   ngOnInit() {
+    // Retourne la liste des ruches
     this.rucheService.getRuches().subscribe(ruches => {
       this.ruches = ruches;
+      //  Par défaut la première valeur du select est la première ruche
       this.id = this.ruches[0]._id;
 
+      //  Fonction effectuant la mise à jour des mesures en fonction du numéro de la ruche
       this.setMesures(this.id);
     });
   }
 
   ngDoCheck() {
-    // this.mesureService.getMesureRequest().subscribe(mesures => {
-    //   if (this.mesures.length !== mesures.length) {
-    //     this.mesures = mesures;
-    //     this.setDP(this.mesureService.selectDate(this.inputDate, this.mesures));
-    //     this.initChart();
-    //   }
-    // });
-
+    // Lorsque l'on est en mode desktop, les mesures changent en fonction de la date sélectionnée. Cette valeur provient du composant datepicker qui est extérieur au composant chart. Il faut donc récupérer cette valeur lorsque l'on clique sur le datepicker
     if (!this.isMobile()) {
       if (this.inputDate !== this.selectedDate && this.selected) {
         this.inputDate = this.selectedDate;

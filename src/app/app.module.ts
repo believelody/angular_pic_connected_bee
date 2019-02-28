@@ -52,8 +52,6 @@ import { HeaderComponent } from './header/header.component';
 import { MobileComponent } from './mobile/mobile.component';
 import { DesktopComponent } from './desktop/desktop.component';
 import { ReportComponent } from './report/report.component';
-import { RucherListComponent } from './rucher-list/rucher-list.component';
-import { RucherDetailComponent } from './rucher-detail/rucher-detail.component';
 import { RucheListComponent } from './ruche-list/ruche-list.component';
 import { RucheDetailComponent } from './ruche-detail/ruche-detail.component';
 import { LogoComponent } from './logo/logo.component';
@@ -83,8 +81,6 @@ export function tokenGetter() {
     MobileComponent,
     DesktopComponent,
     ReportComponent,
-    RucherListComponent,
-    RucherDetailComponent,
     RucheListComponent,
     RucheDetailComponent,
     LogoComponent,

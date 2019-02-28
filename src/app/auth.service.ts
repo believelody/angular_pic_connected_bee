@@ -33,6 +33,7 @@ export class AuthService {
   }
 
   getAuthUser() {
+    //  Lors de l'authentification, un jeton est envoyé par le serveur. Cependant, le serveur envoie aussi un ibjet contenant les informations de l'utilisateur authentifié
     return this.authUser;
   }
 }

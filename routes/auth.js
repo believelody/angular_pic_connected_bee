@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
+// Route d'authentification. Il faut envoyer l'email et le mot de passe
 router.post('/login', async (req, res) => {    
     const { email, password } = req.body;
     if (!email) res.json({ success: false, code: 'email', msg: 'Le champ Email est requis' });
@@ -15,6 +16,7 @@ router.post('/login', async (req, res) => {
             res.json({ success: false, code: 'auth-email', msg: "L'utilisateur n'existe pas" });
         }
 
+        // Le module bcrypt crypte le mot de passe et la fonction compare est un processus interne qui compare celle de la base de donnée à celle de la requête
         const matching = await bcrypt.compare(password, user.password);
         if (!matching) {
             res.json({ success: false, code: 'auth-password', msg: "Le mot de passe est incorrect" });
@@ -66,6 +68,7 @@ router.post('/new-password', async (req, res) => {
     }
 });
 
+// Même si l'application n'a pas d'interface pour créer un nouvel utilisateur, une route côté serveur est prévue pour. Il faut juste un formulaire comprenant obligatoirement une variable 'name' représentant le nom, une variable 'email', une variable 'password' et une variable 'poste'
 router.post('/register', async (req, res) => {
     const { name, email, password, poste } = req.body;
     if (!name) res.json({ success: false, msg: 'Le champ Nom est requis'});

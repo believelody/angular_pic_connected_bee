@@ -11,6 +11,7 @@ export class RucheService {
   constructor(private http: HttpClient) { }
 
   getRuches(): Observable<any> {
+    // Demande au serveur toutes les ruches enregistrées dans la base de données
     return this.http
       .get('/.netlify/functions/app/ruches')
       .pipe(map(ruches => ruches));

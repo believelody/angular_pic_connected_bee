@@ -5,6 +5,9 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
+// Notre middleware vérifie si un jeton existe dans le local storage du navigateur. Ce jeton est enregistré lors de l'authentification à l'application.
+
 export class AuthGuard implements CanActivate {
   constructor(private router: Router) {}
 

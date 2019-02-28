@@ -12,13 +12,14 @@ export class MesureService {
   constructor(private http: HttpClient) { }
 
   getMesureRequest(id: string): Observable<any> {
+    // Demande au serveur les mesures d'une ruche spécifique
     return this.http
       .get(`/.netlify/functions/app/mesures?ruche=${id}`)
       .pipe(map(res => res['mesures']));
   }
 
   selectDate(date: Date, mesures: any[]): any[] {
-    
+    //  Filtre le tableau des mesures en fonction de la date passée en paramètre
     return mesures
       .filter(mesure => {
         let d = new Date(date);
@@ -34,6 +35,7 @@ export class MesureService {
   }
 
   getMesure() {
+    // Retourne les mesures. Cette fonction n'est pas utilisée pour l'instant
     return this.mesures;
   }
 }
