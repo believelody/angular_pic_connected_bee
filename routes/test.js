@@ -1,11 +1,8 @@
 const express = require('express');
-const axios = require('axios');
-const Test = require('../models/test');
 const router = express.Router();
 
 router.get('/test', async (req, res) => {
     console.log(req.query);
-    // const result = await axios.get("https://receive-smss.com/sms/33644631796");
     // console.log(result.data.slice(result.data.indexOf("PIC"), result.data.indexOf("PIC") + 7));
     
     // const valeur = new Test({ value: req.query.value });
@@ -21,14 +18,6 @@ router.post('/test', (req, res) => {
     // const valeur = new Test({ value: req.query.value });
     res.json({ msg: req.body.value });
     // valeur.save().then(val => res.json({ msg: val.value }));
-});
-
-router.post('/envoi', (req, res) => {
-    console.log(req.body);
-
-    const valeur = new Test({ value: req.body.value });
-
-    valeur.save().then(val => res.json(val));
 });
 
 router.get('/', (req, res) => res.json({ msg: JSON.stringify(req.query) }));

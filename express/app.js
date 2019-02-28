@@ -10,7 +10,6 @@ const db = require('../config/keys').mongoURI;
 // Routes import
 const test = require('../routes/test');
 const auth = require('../routes/auth');
-const rucher = require('../routes/rucher');
 const ruche = require('../routes/ruche');
 const mesure = require('../routes/mesure');
 
@@ -23,7 +22,6 @@ mongoose
 app.use(bodyParser.json());
 app.use('/.netlify/functions/app', test);
 app.use('/.netlify/functions/app', auth);
-app.use('/.netlify/functions/app', rucher);
 app.use('/.netlify/functions/app', ruche);
 app.use('/.netlify/functions/app/', mesure);
 

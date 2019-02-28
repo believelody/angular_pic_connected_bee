@@ -33,7 +33,7 @@ export class ChartComponent implements OnInit {
   ngOnInit() {
     this.rucheService.getRuches().subscribe(ruches => {
       this.ruches = ruches;
-      this.id = this.ruches[this.ruches.length - 1]._id;
+      this.id = this.ruches[0]._id;
 
       this.setMesures(this.id);
     });

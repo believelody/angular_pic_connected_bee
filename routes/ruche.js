@@ -1,20 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const Ruche = require('../models/ruche');
-const Rucher = require('../models/rucher');
+const Mesure = require('../models/mesure');
 
-router.get('/ruchers/:id/ruches', async (req, res) => {
-    const { id } = req.params;
-    try {
-        const rucher = await Rucher.findById(id).populate('Ruche');
-        console.log(rucher.ruches);
+/* Voici les listes des différentes routes concernant les ruches */
 
-        res.json(rucher.ruches);
-    } catch (error) {
-        throw Error(error);
-    }
-});
-
+// Renvoie toutes les ruches enregistrées dans la base de données
 router.get('/ruches', async (req, res) => {
     try {
         const ruches = await Ruche.find();
@@ -24,10 +15,11 @@ router.get('/ruches', async (req, res) => {
     }
 });
 
-router.get('/ruchers/:idRucher/ruches/:idRuche', async (req, res) => {
+// Renvoie une ruche spécifique. Il faut remplacer :idRuche par un numéro. Ex: 3
+router.get('/ruches/:idRuche', async (req, res) => {
     const { idRuche } = req.params;
     try {
-        const ruche = await Ruche.findById(idRuche).populate('Mesure');
+        const ruche = await Ruche.findOne({numero: idRuche}).populate('Mesure');
         if (!ruche) {
             res.status(400).json("Désolé, cette ruche est introuvable");
         }
@@ -39,19 +31,16 @@ router.get('/ruchers/:idRucher/ruches/:idRuche', async (req, res) => {
     }
 });
 
-router.post('/ruchers/:id/nouvelle-ruche', async (req, res) => {
-    const { id } = req.params;
+// Crée une nouvelle ruche. Il faut bien spécifier la méthode en "POST" même si aucune donnée n'est passée en paramètre. Le système nomme les ruches par incrémentation du numéro.
+router.post('/ruches/nouvelle-ruche', async (req, res) => {
     try {
-        const rucher = await Rucher.findById(id);
-        console.log(rucher.ruches);
+        const ruches = await Ruche.find();
+        console.log(ruches.length);
         
         const ruche = new Ruche({
-            numero: rucher.ruches.length > 0 ? rucher.ruches.length + 1 : 1,
-            rucher: id,
+            numero: ruches.length > 0 ? ruches.length + 1 : 1,
             mesures: []
         });
-        rucher.ruches.push(ruche);
-        await rucher.save();
         await ruche.save();
 
         res.json({msg: `La ruche ${ruche.numero} a bien été créée.`});
@@ -60,13 +49,17 @@ router.post('/ruchers/:id/nouvelle-ruche', async (req, res) => {
     }
 });
 
-router.delete('/ruchers/:idRucher/ruches/:idRuche', async (req, res) => {
+// Supprime la ruche. Il faut remplacer :idRuche par un numéro. Le système supprime par ricochet toutes les mesures liées à cette ruche.
+router.delete('/ruches/:idRuche', async (req, res) => {
     console.log(req.params.idRuche);
     
-    const ruche = await Ruche.findById(req.params.idRuche);
+    const ruche = await Ruche.findOne({ numero: req.params.idRuche });
     if (!ruche) {
         res.status(404).json({ msg: "Désolé, cette ruche est introuvable" });
     }
+    ruche.mesures.forEach(async mesure => {
+        await Mesure.findByIdAndDelete(mesure);
+    });
     await Ruche.findByIdAndDelete(ruche.id);
     res.json({ msg: "La ruche a bien été supprimée" });
 });
