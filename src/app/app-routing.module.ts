@@ -17,8 +17,8 @@ const routes: Routes = [
   { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'reports', component: ReportComponent, canActivate: [AuthGuard] },
-  { path: '/ruches', component: RucheListComponent, canActivate: [AuthGuard] },
-  { path: '/ruches/:idRuche', component: RucheDetailComponent, canActivate: [AuthGuard] },
+  { path: 'ruches', component: RucheListComponent, canActivate: [AuthGuard] },
+  { path: 'ruches/:idRuche', component: RucheDetailComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
