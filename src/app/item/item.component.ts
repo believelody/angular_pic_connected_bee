@@ -29,7 +29,6 @@ export class ItemComponent implements OnInit {
       .filter(mesure => {
         let m = new Date(mesure.updatedAt);
         let d = new Date(date);
-        console.log(mesure);
 
         if (m.getMonth() === d.getMonth() && m.getDate() === d.getDate()) return mesure;
       })

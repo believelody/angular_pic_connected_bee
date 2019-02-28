@@ -57,12 +57,11 @@ router.get('/envoi', async (req, res) => {
     }
 });
 
-// Renvoie toutes les mesures enregistrées d'une ruche. Il faut spécifier la ruche en ajoutant en "query" le numéro de la ruche. Ex: https://connectedbee.netlify.com/.../mesures?ruche=2
+// Renvoie toutes les mesures enregistrées d'une ruche. Il faut spécifier la ruche en ajoutant en "query" l'identifiant de la ruche. Ex: https://connectedbee.netlify.com/.../mesures?ruche=5c56jk456m09kt
 router.get('/mesures', async (req, res) => {
     const { ruche } = req.query;
     try {
         const mesures = await Mesure.find({ ruche });
-
         res.json({ success: true, mesures});
     } catch (error) {
         throw Error(error);

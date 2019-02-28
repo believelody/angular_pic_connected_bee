@@ -102,8 +102,6 @@ export class ChartComponent implements OnInit {
     let dates: any[] = [];
     let poids: number[] = [];
 
-    console.log(mesures);
-
     if (mesures.length > 0) {
       mesures.forEach(mesure => {
         dates.push(moment(mesure.updatedAt).format("DD MMM YYYY HH:mm"));
