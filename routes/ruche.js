@@ -9,6 +9,7 @@ const Mesure = require('../models/mesure');
 router.get('/ruches', async (req, res) => {
     try {
         const ruches = await Ruche.find();
+        console.log("test");
         res.json(ruches);
     } catch (error) {
         throw Error(error);
